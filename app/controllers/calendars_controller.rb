@@ -9,13 +9,16 @@ class CalendarsController < ApplicationController
   # 予定の保存
   def create
     Plan.create(plan_params)
+    # Plan=モデル名
     redirect_to action: :index
   end
 
   private
 
   def plan_params
-    params.require(:calendars).permit(:date, :plan)
+    params.require(:plan).permit(:date, :plan)
+    # requireに来るのはモデル名。permitにあるのがその中身(モデル名が箱でその中に中身があるようなイメージ)。
+    # 
   end
 
   def getWeek
